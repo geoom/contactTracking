@@ -11,6 +11,7 @@
 </p>
 
 <ul>
+   <strong>phone numbers</strong>
   	<% @person.phone_numbers.each do |phone| %>
 	    <li>
 	    	<%= phone.number %>
@@ -21,6 +22,7 @@
 </ul>
 
 <ul>
+   <strong>email addresses</strong>
    <% @person.email_addresses.each do |email| %>
       <li><%= email.address %></li>
    <% end %>
