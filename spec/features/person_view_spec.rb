@@ -94,7 +94,4 @@ describe 'the person view', type: :feature do
 		end
 	end
 
-
-
-
 end
