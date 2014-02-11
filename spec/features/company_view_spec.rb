@@ -66,4 +66,33 @@ describe 'the company view', type: :feature do
 		end
 	end
 
+	describe 'email addresses' do
+
+		before(:each) do
+			company.email_addresses.create(address: 'email3443@email.com')
+			company.email_addresses.create(address: 'email4544@email.com')
+			visit company_path(company)
+		end
+
+		it 'show email addresses' do
+			company.email_addresses.each do |email|
+				expect(page).to have_selector('li', text: email.address)
+			end
+		end
+
+		it 'has a link to add email address' do
+			expect(page).to have_link('Add email address', href: new_email_address_path(contact_id: company.id, contact_type: 'Company'))
+		end
+
+		it 'adds a new email address' do
+			page.click_link('Add email address')
+			page.fill_in('Address', with: 'mail@mail.com')
+			page.click_button('Create Email address')
+
+			expect(current_path).to eq(company_path(company))
+			expect(page).to have_content('mail@mail.com')
+		end
+
+	end
+
 end
