@@ -13,7 +13,7 @@ describe PhoneNumber do
 		phone_number.contact_id = nil
 		expect(phone_number).to_not be_valid
 	end
-	it 'is associate with a person' do
+	it 'is associate with a contact' do
 		expect(phone_number).to respond_to(:contact)
 	end
 end
