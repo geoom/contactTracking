@@ -1,5 +1,5 @@
 class PhoneNumbersController < ApplicationController
-  before_action :set_phone_number, only: [:show, :edit, :update, :destroy]
+  before_action :lookup_phone_number, only: [:edit, :update, :destroy]
 
   # GET /phone_numbers/new
   def new
@@ -55,7 +55,7 @@ class PhoneNumbersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_phone_number
+    def lookup_phone_number
       @phone_number = PhoneNumber.find(params[:id])
     end
 
@@ -63,4 +63,5 @@ class PhoneNumbersController < ApplicationController
     def phone_number_params
       params.require(:phone_number).permit(:number, :contact_id, :contact_type)
     end
+
 end
